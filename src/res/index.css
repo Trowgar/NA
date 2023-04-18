@@ -167,6 +167,7 @@ body {
 .na-table td {
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 .na-table-rightborder th {
@@ -223,4 +224,12 @@ body {
     background-color: var(--lighter_bg);
     border-color: var(--button_bg);
     color: #888;
+}
+
+.is_online {
+    border-left: 5px solid green;
+}
+
+.is_offline {
+    border-left: 5px solid red;
 }
