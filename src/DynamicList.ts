@@ -87,7 +87,8 @@ export class DynamicList {
         const modeIndexCell = document.createElement("td");
         const addressCell = document.createElement("td");
 
-        onlineStatusCell.classList.add("online-status", device.is_online ? "online" : "offline");
+        onlineStatusCell.classList.add("online-status");
+        onlineStatusCell.classList.add(device.is_online ? "is_online" : "is_offline");
         uidCell.textContent = device.uid;
         labelCell.textContent = device.label;
         manufacturerCell.textContent = device.manufacturer;
@@ -106,10 +107,10 @@ export class DynamicList {
         return row;
     }
 
+
     private updateTable(): void {
-        while (this._root.firstChild) {
-            this._root.removeChild(this._root.firstChild);
-        }
+        const rowsToRemove = this._root.querySelectorAll("tr:not(:first-child)");
+        rowsToRemove.forEach(row => this._root.removeChild(row));
 
         for (const device of this.filteredDevices) {
             const row = this.createTableRow(device);
